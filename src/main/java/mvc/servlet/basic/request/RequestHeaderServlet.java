@@ -51,6 +51,13 @@ public class RequestHeaderServlet extends HttpServlet {
 */
         request.getHeaderNames().asIterator()
                 .forEachRemaining(headerName -> System.out.println(headerName + ": " + request.getHeader(headerName)));
+
+        /**
+         //Header를 1개만 조회하고 싶다.
+         request.getHeader("원하는 헤더");
+         */
+
+
         System.out.println("--- Headers - end ---");
         System.out.println();
     }
@@ -77,7 +84,7 @@ public class RequestHeaderServlet extends HttpServlet {
             } }
         System.out.println();
         System.out.println("[Content 편의 조회]");
-        System.out.println("request.getContentType() = " +
+        System.out.println("request.getContentType() = " + //get 방식은 content를 보내지 않는다.(message body가 null) //post 방식에서 body에 데이터를 추가해서 보내면, 해당 데이터에 맞는 content type이 만들어진다.
                 request.getContentType());
         System.out.println("request.getContentLength() = " +
                 request.getContentLength());
@@ -89,9 +96,8 @@ public class RequestHeaderServlet extends HttpServlet {
 
 
     //기타 정보
-
     private void printEtc(HttpServletRequest request) { System.out.println("--- 기타 조회 start ---");
-        System.out.println("[Remote 정보]");
+        System.out.println("[Remote 정보]"); //요청이 온 것에 대한 정보
         System.out.println("request.getRemoteHost() = " +
                 request.getRemoteHost()); //
         System.out.println("request.getRemoteAddr() = " +
@@ -99,7 +105,7 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getRemotePort() = " +
                 request.getRemotePort()); //
         System.out.println();
-        System.out.println("[Local 정보]");
+        System.out.println("[Local 정보]"); //나의 서버에 대한 정보
         System.out.println("request.getLocalName() = " +
                 request.getLocalName()); //
         System.out.println("request.getLocalAddr() = " +

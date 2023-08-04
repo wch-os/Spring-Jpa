@@ -41,6 +41,6 @@ public class RequestParamServlet extends HttpServlet {
             System.out.println("username = " + name);
         }
 
-        response.getWriter().write("ok");
+        response.getWriter().write("ok"); //웹브라우저에 ok 출력
     }
 }
