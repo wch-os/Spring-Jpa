@@ -1,6 +1,5 @@
 package mvc.servlet.basic;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +10,7 @@ import java.io.IOException;
 @WebServlet(name = "helloServlet", urlPatterns = "/hello")
 public class HelloServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         System.out.println("HelloServlet.service");
         System.out.println("request = " + request);
@@ -19,7 +18,6 @@ public class HelloServlet extends HttpServlet {
 
         String username = request.getParameter("username"); //쿼리 파라미터
         System.out.println("username = " + username);
-
 
         response.setContentType("text/spring"); //header에 들어감
         response.setCharacterEncoding("utf-8");
