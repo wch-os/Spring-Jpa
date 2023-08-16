@@ -13,9 +13,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "memberSaveServlet", urlPatterns = "/servlet/members/save")
 public class MemberSaveServlet extends HttpServlet {
-
-    MemberRepository memberRepository = MemberRepository.getInstance();
-
+    MemberRepository memberRepository = MemberRepository.getInstance(); //싱글톤 객체 생성
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("MemberSaveServlet.service");
@@ -36,7 +34,7 @@ public class MemberSaveServlet extends HttpServlet {
                 "<body>\n" +
                 "성공\n" +
                 "<ul>\n" +
-                "    <li>id="+member.getId()+"</li>\n" +
+                "    <li>id="+member.getId()+"</li>\n" + //Repo에 저장한 데이터를 이용해, 동적 HTML 생성
                 "    <li>username="+member.getUsername()+"</li>\n" +
                 "    <li>age="+member.getAge()+"</li>\n" +
                 "</ul>\n" +
