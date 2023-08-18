@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -12,6 +14,7 @@ import java.util.List;
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id
@@ -88,7 +91,7 @@ public class Order {
                 .sum();
 
 //        for (OrderItem orderItem : orderItems) {
-//            totalPrice += orderItem.getTotalPrice();
+//            totalPrice += orderItem.getOrderPrice();
 //        }
 
         return totalPrice;
