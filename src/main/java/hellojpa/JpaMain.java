@@ -16,11 +16,7 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member();
-            //member.setId("A");
-            member.setUsername("sun");
 
-            em.persist(member);
             tx.commit();
         } catch(Exception e){
             e.printStackTrace();
