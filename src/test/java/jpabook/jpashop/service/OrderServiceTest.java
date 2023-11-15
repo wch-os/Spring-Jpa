@@ -43,6 +43,7 @@ public class OrderServiceTest {
         //then
         Order getOrder = orderRepository.findOne(orderId);
 
+        //기대하는 값, 실제 값
         assertEquals("상품 주문시 상태는 Order", OrderStatus.ORDER, getOrder.getStatus());
         assertEquals("주문한 상품 종류 수가 정확해야 한다.", 1, getOrder.getOrderItems().size());
         assertEquals("주문 가격은 가격 * 수량이다.", 10000 * orderCount, getOrder.getTotalPrice());

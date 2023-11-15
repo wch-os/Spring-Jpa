@@ -11,12 +11,15 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {
+
+    @PersistenceContext
     private final EntityManager em;
 
     public void save(Member member) {
         em.persist(member);
     }
 
+    // em.find(type, primary key)
     public Member findOne(Long id) {
         return em.find(Member.class, id);
     }
