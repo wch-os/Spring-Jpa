@@ -72,4 +72,16 @@ public class OrderRepository {
         }
         return query.getResultList();
     }
+
+    // repo는 entity를 조회하는 용도이다.
+    public List<Order> findAllWithMemberDelivery() {
+        // order, member, delivery 를 한 번에 객체를 join 해서 가지고 온다.
+        List<Order> resultList = em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+
+        return resultList;
+    }
 }
