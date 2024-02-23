@@ -84,4 +84,31 @@ public class OrderRepository {
 
         return resultList;
     }
+
+    //fetch join 하는 쿼리
+    //hibernate6부터 distinct를 자동 적용해준다.
+    public List<Order> findAllWithItem() {
+        List<Order> resultList = em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i", Order.class
+        ).getResultList();
+
+        return resultList;
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        // order, member, delivery 를 한 번에 객체를 join 해서 가지고 온다.
+        List<Order> resultList = em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class
+                ).setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+
+        return resultList;
+    }
 }
