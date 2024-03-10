@@ -20,6 +20,7 @@ public class MyView {
         dispatcher.forward(request, response);
     }
 
+    // model에 있는 정보를 모두 request에 저장한다.
     public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         modelToRequestAttribute(model, request);
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);

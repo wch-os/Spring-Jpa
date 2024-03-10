@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "frontControllerServiceV1", urlPatterns = "/front-controller/v1/*")
-public class FrontControllerServiceV1 extends HttpServlet {
+@WebServlet(name = "frontControllerServletV1", urlPatterns = "/front-controller/v1/*")
+public class FrontControllerServletV1 extends HttpServlet {
 
     private Map<String, ControllerV1> controllerMap = new HashMap<>();
 
-    public FrontControllerServiceV1() {
+    public FrontControllerServletV1() {
         controllerMap.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
         controllerMap.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
         controllerMap.put("/front-controller/v1/members", new MemberListControllerV1());

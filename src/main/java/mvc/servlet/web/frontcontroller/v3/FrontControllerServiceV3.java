@@ -44,7 +44,7 @@ public class FrontControllerServiceV3 extends HttpServlet {
         //논리이름 : new-form
         String viewName = modelView.getViewName();
 
-        ////논리 주소를 물리 주소로 변환
+        //논리 주소를 물리 주소로 변환
         MyView view = viewResolver(viewName);
 
         //view가 렌더링되기 위해서, model 정보가 필요함
@@ -53,6 +53,8 @@ public class FrontControllerServiceV3 extends HttpServlet {
     private static MyView viewResolver(String viewName) {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
+
+    // request의 모든 파라미터에 대한 정보를 paraMap에 저장한다.
     private static Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String, String> paramMap = new HashMap<>();
         request.getParameterNames().asIterator()
