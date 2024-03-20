@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.1.2'
+	id 'io.spring.dependency-management' version '1.1.2'
+}
+
+group = 'mvc'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//JSP 추가 시작 //스프링부트 3.0 이상
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'jakarta.servlet:jakarta.servlet-api'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+
+	// jsp 요청 시 다운로드 문제 해결
+		// https://www.inflearn.com/chats/184306/%ED%95%B4%EA%B2%B0%EC%B1%85-new-form-jsp-%EC%9A%94%EC%B2%AD%EC%8B%9C-jsp%ED%8C%8C%EC%9D%BC%EC%9D%84-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EB%AC%B8%EC%A0%9C
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:1.0'
+	// JSP 추가 끝
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
